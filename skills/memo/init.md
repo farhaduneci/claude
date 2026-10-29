@@ -4,7 +4,12 @@ Project-scoped only — does not touch global files.
 
 1. If `~/.claude/memory/projects/{mapped-path}/memory.md` already exists (see SKILL.md for
    how `{mapped-path}` is derived), stop.
-2. Otherwise create the project's scope root at `~/.claude/memory/projects/{mapped-path}/`:
+2. Otherwise create the scope root **inside the project** at `{project}/memory/` (if the
+   project already has its own `memory/` index of the same shape, reuse it), then symlink
+   `~/.claude/memory/projects/{mapped-path}` -> `{project}/memory`. Project memory lives in the
+   project, never as real files in the global repo (its `projects/*` is git-ignored).
+   Git: own private repo → commit `memory/` with the project; public or third-party repo → add
+   `/memory/` to `.git/info/exclude` instead (never publish memory). Files:
 
 `general.md`:
 ```

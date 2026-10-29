@@ -11,6 +11,7 @@ Manages `~/.claude/memory/`, which holds two kinds of scope with the **identical
 - **global** — `~/.claude/memory/{memory.md,general.md,domain/*.md}`, facts true broadly.
 - **project** — `~/.claude/memory/projects/{mapped-path}/{memory.md,general.md,domain/*.md}`
   (one dir per absolute project path, `/` replaced by `-`), facts true only for that project.
+  Each is a symlink to `{project}/memory/`: the files live inside the project itself.
 
 Each scope root has:
 - `memory.md` — index: table of `| File | Description | Last updated |`.
